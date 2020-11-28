@@ -218,7 +218,7 @@ header nav .rightSection a:hover{
 .post{
   margin: 1rem;
 }
-.post form {
+.post form, .posts {
   max-width: 900px;
   padding: 1rem;
   background: white;
@@ -358,7 +358,64 @@ header nav .rightSection a:hover{
   color: purple;
   margin-top: 0.5rem;
 }
+.posts{
+  margin-top: 1rem;
+  text-transform: capitalize;
 
+}
+.posts ul{
+  list-style-type: none;
+
+}
+.posts ul li .trash{
+  color: red;
+  /* text-align: right; */
+  margin-left: auto;
+  display: block;
+  font-size: 25px;
+  width: fit-content;
+}
+.verify .yes, .verify .no{
+  text-transform: capitalize;
+  font-weight: 600;
+  transition: 0.3s;
+
+}
+.empty{
+  color: rgba(0,0,0,0.3);
+  font-size: 12px;
+  margin: 1rem 2rem;
+}
+
+.verify{
+  padding: 1rem;
+
+  position: absolute ;
+  right: 0;
+  background: purple;
+  min-height: 100%;
+  /* border: 1px solid white; */
+  top: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  /* margin-right: -120px; */
+  transition: 0.3s;
+}
+.posts ul li{
+  position: relative;
+  padding:  1rem;
+  transition: 0.3s;
+  cursor: pointer;
+  display: flex;
+  overflow-x: hidden;
+  /* padding: 0.5rem; */
+}
+.posts ul li:hover{
+  background-color: rgba(0,0,0,0.05);
+
+}
 
 /* loader section */
 .spinner {

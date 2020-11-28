@@ -5,6 +5,7 @@ import Header from './components/Header';
 import Post from './pages/blog post'
 import Auth from './pages/authentication';
 import Home from './pages/home';
+import Posts from './pages/posts';
 
 function App() {
   const loggedIn = sessionStorage.getItem('loggedIn');
@@ -23,6 +24,9 @@ function App() {
             </Route>
             <Route path= '/blog_post' >
               <Post />
+            </Route>
+            <Route path= '/posts' >
+              <Posts />
             </Route>
           </Switch>
         </Router>
