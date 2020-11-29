@@ -5,6 +5,7 @@ const blogPost = require('./routes/dashboard/blogPost')
 const fileUpload = require('express-fileupload');
 const video = require('./routes/dashboard/videoUpload');
 const getPosts = require('./routes/dashboard/getPosts');
+const auth = require('./routes/dashboard/auth')
 const app = express();
 
 app.use(cors());
@@ -17,6 +18,7 @@ app.use(express.static('./public'));
 app.use('/', video);
 app.use('/', blogPost);
 app.use('/', getPosts);
+app.use('/', auth);
 //end
 app.listen(4000, () => {
     console.log(`Server started on 4000`);
