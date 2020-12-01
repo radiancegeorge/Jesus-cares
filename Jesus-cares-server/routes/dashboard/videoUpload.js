@@ -18,7 +18,7 @@ video.post('/video_upload', (req, res)=>{
 
         //async storage of document
         const storeDocument = async ()=>{
-            document.mv(`${__dirname}/../../uploads/docs/${genName}.${documentType}`, (err)=>{
+            document.mv(`${__dirname}/../../public/uploads/docs/${genName}.${documentType}`, (err)=>{
                 if(err)throw err;
                 console.log('document stored')
             })
@@ -26,7 +26,7 @@ video.post('/video_upload', (req, res)=>{
         //ends here*****
         res.status(200).send();
         document !== undefined && storeDocument();
-        video.mv(`${__dirname}/../../uploads/videos/${genName}.${videoType}`, async (err)=>{
+        video.mv(`${__dirname}/../../public/uploads/videos/${genName}.${videoType}`, async (err)=>{
             if(err)throw err;
             console.log('moved..')
             //insert names and content to db;

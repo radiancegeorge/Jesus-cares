@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jesus cares</title>
+</head>
+<body>
+
+    <style>
+        *{
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            outline: none;
+
+        }
+        .err{
+            color: red;
+            font-size: 14px;
+            position: absolute;
+            top: 4rem;
+        }
+        p{
+            margin-top: 2rem;
+            font-size: 15px;
+        }
+        body{
+            min-height: 100vh;
+            
+        }
+        .container{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            max-width: 400px;
+            margin: auto;
+            padding: 1rem;
+        }
+        label{
+            display: block;
+            /* width: 100%; */
+            margin: 0.2rem 0;
+        }
+        input{
+            width: 100%;
+            /* display: block; */
+            font-size: 18px;
+            padding: 0.8rem;
+            border: 1px solid transparent;
+            border-bottom: 1px solid purple;
+        }
+        button{
+            margin-left: auto;
+            display: block;
+            width: fit-content;
+            padding: 0.8rem;
+            cursor: pointer;
+            color: white;
+            background:purple;
+            border-color: transparent;
+            border-radius: 10px;
+            transition: 0.3s;
+            margin-top: 1rem;
+
+        }
+        button:hover{
+            background-color: grey;
+        }
+        form{
+            width: 100%;
+        }
+    </style>
+
+    <div class="container">
+        <% if(err){%>
+            <p class="err"><%= err %></p>
+        <%}%>
+        <form action="/reset" method="POST" enctype="application/x-www-form-urlencoded">
+            <p>New Password</p>
+            <label for="password">
+                <input type="password" name="password" placeholder="">
+            </label>
+            <p>Re-type Password</p>
+            <label for="password">
+                <input type="password" name="re_password" placeholder="">
+            </label>
+            <button>Proceed</button>
+        </form>
+    </div>
+    <script>
+        setInterval(()=>{
+            const errElem = document.querySelector('.err');
+            // console.log(errElem)
+            if(errElem !== null){
+                setTimeout(()=>{
+                    document.querySelector('.container').removeChild(errElem);
+                    clearTimeout()
+                }, 3000)
+            }
+        }, 2000)
+    </script>
+</body>
+</html>

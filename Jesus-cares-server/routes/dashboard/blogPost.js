@@ -16,7 +16,7 @@ blogPost.post('/blog_post', (req, res)=>{
     db.query(sql, [header, content, author, new Date().toString(), imageName], (err, result)=>{
         if(err)throw err;
         console.log('inserted..');
-        coverPhoto.mv(`${__dirname}/../../uploads/coverPhotos/${imageName}`, (err)=>{
+        coverPhoto.mv(`${__dirname}/../../public/uploads/coverPhotos/${imageName}`, (err)=>{
             if(err)throw err;
             else console.log('image uploaded')
         })
