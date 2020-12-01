@@ -1,9 +1,27 @@
+const { request } = require('express');
 const express = require('express');
 const db = require('../dashboard/db');
 const blog = express.Router();
 
 
+blog.use((req, res, next)=>{
+    let totalPost = 0;
+    const sql = `select * from blog_post`;
+    db.query(sql, (err, result)=>{
+        if(err)throw err;
+        totalPost += result.length;
+        const sql = `select * from video_upload`;
+        db.query(sql, (err, result)=>{
+            if(err)throw err;
+            totalPost += result.length;
+            req.totalPost = totalPost;
+            next()
+        })
+    })
+})
+
 blog.get('/', (req, res)=>{
+    const {totalPost} = req;
     const promise = new Promise((resolve, reject)=>{
         const data = [];
         const latestPost = [];
@@ -47,7 +65,7 @@ blog.get('/', (req, res)=>{
                 }
             }).on('end', end=>{
                 console.log('second done');
-                resolve({data, latestPost});
+                resolve({data, latestPost, totalPost});
             }).on('error', err=>{
                 reject(err)
             })
@@ -62,6 +80,6 @@ blog.get('/', (req, res)=>{
         res.render('blog', {data, latestPost});
     })
 })
-console.log(new Date().toString().split(' ')[1])
+// console.log(new Date().toString().split(' ')[1])
 
 module.exports = blog;
