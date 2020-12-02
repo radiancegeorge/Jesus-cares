@@ -1,0 +1,4 @@
+<% const type = post.image_name.split('.')[1]%>
+                                        <%if(type === 'jpeg'){%>
+                                            <%= `uploads/coverPhotos/${post.image_name}`%>
+                                        <%}%>

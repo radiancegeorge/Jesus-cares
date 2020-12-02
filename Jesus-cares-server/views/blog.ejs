@@ -140,18 +140,21 @@
                             <%data.forEach(article=>{%>
                                 <article class="blog_item">
                                     <div class="blog_item_img">
-                                        <img class="card-img rounded-0" src="<% const type = article.image_name.split('.')[1]
-                                        if(type === 'jpeg'){%>
-                                            <%= `../uploads/coverPhotos/${article.image_name}`%>
-                                        <%}%>" alt="">
-                                        <a href="#" class="blog_item_date">
+                                        <%let imgElem;%>
+                                        <%if(article.image_name){%>
+                                            <% imgElem = `<img class="card-img rounded-0" src='uploads/coverPhotos/${article.image_name}' >`;%>
+                                        <%}else{
+                                            imgElem = `<img class="card-img rounded-0" src='uploads/coverPhotos/hiclipart.png'  alt= 'video'>`
+                                        } %>
+                                        <%- imgElem %>
+                                        <a href="/blog/post/<%= article.id%>" class="blog_item_date">
                                             <h3><%=new Date(article.date).getDate()%></h3>
                                             <p><%= new Date(article.date).toString().split(' ')[1]%></p>
                                         </a>
                                     </div>
         
                                     <div class="blog_details">
-                                        <a class="d-inline-block" href="single-blog.html">
+                                        <a class="d-inline-block" href="/blog/post/<%= article.id%>">
                                             <h2><%= article.heading%></h2>
                                         </a>
                                         <%- article.content%>
@@ -166,22 +169,36 @@
 
                         <nav class="blog-pagination justify-content-center d-flex">
                             <ul class="pagination">
-                                <li class="page-item">
-                                    <a href="#" class="page-link" aria-label="Previous">
-                                        <i class="ti-angle-left"></i>
-                                    </a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link">1</a>
-                                </li>
-                                <li class="page-item active">
+
+                                <% const [blogPostCount, videoUploadCount] = totalPost;%>
+                                    <% if(blogPostCount > 3 || videoUploadCount > 3){%>
+
+                                        <% const total = blogPostCount + videoUploadCount%>
+                                        <% const pages = Math.floor(total / 3) %>
+
+                                         <li class="page-item">
+                                            <a href="/blog/posts/<%=currentPage <= 1 ? 1 : Number(currentPage) - 1%>" class="page-link" aria-label="Previous">
+                                                <i class="ti-angle-left"></i>
+                                            </a>
+                                        </li>
+                                        <% for(let page = 1; page <= pages ; page++){%>
+                                            <li class="page-item">
+                                                <a href="/blog/posts/<%=Number(pages) + 1%>" class="page-link"><%=page + 1%></a>
+                                            </li>
+                                        <%}%>
+                                        <li class="page-item">
+                                            <a href="/blog/posts/<%=Number(currentPage) + 1%>" class="page-link" aria-label="Next">
+                                                <i class="ti-angle-right"></i>
+                                            </a>
+                                        </li>
+                                    <%}%>
+                                
+                                    
+                                
+                                <!-- <li class="page-item active">
                                     <a href="#" class="page-link">2</a>
-                                </li>
-                                <li class="page-item">
-                                    <a href="#" class="page-link" aria-label="Next">
-                                        <i class="ti-angle-right"></i>
-                                    </a>
-                                </li>
+                                </li> -->
+                                
                             </ul>
                         </nav>
                     </div>
@@ -252,11 +269,21 @@
                             
                             <%if(latestPost){%>
                                 <% latestPost.forEach(post =>{%>
+                                    <%if(post.heading.length > 18){%>
+                                        <%const heading = post.heading.substr(0, 18) + '...';
+                                        post.heading = heading%>
+                                    <%}%>
+                                    <%let imgElem;%>
                                     <div class="media post_item">
-                                        <img style="max-width: 100px;" src="<% const type = post.image_name.split('.')[1]
-                                        if(type === 'jpeg'){%>
-                                            <%= `../uploads/coverPhotos/${post.image_name}`%>
-                                        <%}%>" alt="post">
+                                        <%if(post.image_name){%>
+                                            <%imgElem = `<img style='max-width: 100px;' src='uploads/coverPhotos/${post.image_name}' alt='' >`;%>
+                                        <%}else{
+                                            imgElem = `<img style='max-width: 100px;' src='uploads/coverPhotos/hiclipart.png' alt='video' >`
+                                        } %>
+
+
+                                        <%- imgElem %>
+                                       
                                         <div class="media-body">
                                             <a href="single-blog.html">
                                                 <h3><%= post.heading%></h3>

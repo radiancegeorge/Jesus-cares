@@ -23,8 +23,12 @@ app.use('/', getPosts);
 app.use('/', auth);
 app.use('/blog', blog)
 //end
-app.use(express.static('public'));
-
+app.use('/',express.static('public'));
+app.use('/blog/posts/', express.static('public'));
+app.use('/blog/', express.static('public'));
+app.use('/blog', express.static('public'));
+app.use('/blog/posts', express.static('public'));
+app.use('/blog/posts/:num', express.static('public'));
 app.listen(4000, () => {
     console.log(`Server started on 4000`);
 });
