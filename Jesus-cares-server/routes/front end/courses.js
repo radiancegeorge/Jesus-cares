@@ -1,37 +1,37 @@
-const { request } = require('express');
 const express = require('express');
-const { end } = require('../dashboard/db');
-const db = require('../dashboard/db');
-const blog = express.Router();
+const courses = express.Router();
+const db = require('../dashboard/db')
 
-
-blog.use((req, res, next)=>{
+courses.use((req, res, next)=>{
     let totalPost = [];
-    const sql = `select * from blog_post`;
+    const sql = `select * from video_upload`;
     db.query(sql, (err, result)=>{
         if(err)throw err;
         totalPost.push(result.length);
-        //must add 0 to the array to avoid crashing things;
+        // must add 0 to the array to avoid crashing things
+
         totalPost.push(0);
-        req.totalPost = totalPost
-        next()
+        req.totalPost = totalPost;
+        next()        
     })
 })
 
-blog.get('/', (req, res)=>{
+
+courses.get('/courses', (req, res)=>{
     const {totalPost} = req;
     const currentPage = 1
     const promise = new Promise((resolve, reject)=>{
         const data = [];
         const latestPost = [];
-        let sql = `select * from blog_post order by id desc limit 3`;
+        let sql = `select * from video_upload order by id desc limit 3`;
         db.query(sql).on('result', result=>{
             const trunc = result.content.split('</p>');
-            if(trunc.length > 1){
-                const index = result.content.indexOf(trunc[1]);
+            if(trunc.length >= 1){
+                const index = result.content.indexOf(trunc[0]);
                 const content = result.content.substr(0,index -4)+'......</p>';
                 result.content = content;
             }
+            result.video = true
             data.push(result);
             if(latestPost.length < 5){
                 
@@ -71,13 +71,12 @@ blog.get('/', (req, res)=>{
         
         res.render('blog', {data, latestPost, totalPost, currentPage});
     })
-})
+});
 
 
 
-//to see next and previous posts::
 
-blog.get('/posts/:num', (req, res)=>{
+courses.get('/courses/posts/:num', (req, res)=>{
     const {num} = req.params;
     const promise = new Promise((resolve, reject)=>{
         const data = [];
@@ -85,7 +84,7 @@ blog.get('/posts/:num', (req, res)=>{
         const {totalPost} = req;
         const startingPoint = num * 3 - 3;
         const endingPoint = num * 3
-        const sql = `select * from blog_post order by id desc`;
+        const sql = `select * from video_upload order by id desc`;
         db.query(sql, (err, result)=>{
             if(err)throw err;
             //push latest post
@@ -93,7 +92,10 @@ blog.get('/posts/:num', (req, res)=>{
                 if(result.length > 0){
                     result.forEach(item=>{
                         // console.log(latestPost.length)
-                        if(latestPost.length < 5) latestPost.push(item);
+                        if(latestPost.length < 5){
+                            item.video = true
+                            latestPost.push(item);
+                        }
                     })
                 }
                 
@@ -104,12 +106,12 @@ blog.get('/posts/:num', (req, res)=>{
                 if(result.length > 0){
                     result.forEach(item=>{
                         const trunc = item.content.split('</p>');
-                        if(trunc.length > 1){
-                            const index = item.content.indexOf(trunc[1]);
+                        if(trunc.length >= 1){
+                            const index = item.content.indexOf(trunc[0]);
                             const content = item.content.substr(0,index -4)+'......</p>';
                             item.content = content;
                         }
-            
+                        item.video = true
                         data.push(item)
                     });
                 }
@@ -155,13 +157,12 @@ blog.get('/posts/:num', (req, res)=>{
         const {latestPost, totalPost, data} = result;
         res.render('blog', {latestPost, totalPost, data, currentPage: num});
     })
-})
-
+});
 
 //fetch latest using middleware;
-blog.use((req, res, next)=>{
+courses.use((req, res, next)=>{
     const latestPost = [];
-    const sql = 'select * from blog_post order by id desc limit 6';
+    const sql = 'select * from video_upload order by id desc limit 6';
     db.query(sql).on('result', result=>{
         latestPost.push(result);
     }).on('end', end=>{
@@ -170,21 +171,17 @@ blog.use((req, res, next)=>{
     })
 }) 
 
-blog.get('/post/:postId', (req, res)=>{
-    const {postId} = req.params;
+courses.get('/courses/post/:postId', (req, res)=>{
+    let {postId} = req.params;
+    postId = postId.replace('x', '');
+    postId = Number(postId);
+    console.log(postId)
     const {latestPost} = req
-    const sql = `select * from blog_post where id = ?`;
+    const sql = `select * from video_upload where id = ?`;
     db.query(sql, postId, (err, result)=>{
         if(err)throw err;
         res.render('post', {latestPost, data: result[0]});
     })
 })
 
-
-
-
-
-
-// console.log(new Date().toString().split(' ')[1])
-
-module.exports = blog;
+module.exports = courses;

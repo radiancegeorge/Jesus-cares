@@ -1,0 +1,58 @@
+<aside class="single_sidebar_widget popular_post_widget">
+    <h3 class="widget_title">Recent Post</h3>
+    
+    <%if(latestPost){%>
+        <% latestPost.forEach(post =>{%>
+            <%if(post.heading.length > 18){%>
+                <%const heading = post.heading.substr(0, 18) + '...';
+                post.heading = heading%>
+            <%}%>
+            <%let imgElem;%>
+            <div class="media post_item">
+                <%if(post.image_name){%>
+                    <%imgElem = `<img style='max-width: 100px;' src='uploads/coverPhotos/${post.image_name}' alt='' >`;%>
+                <%}else{
+                    imgElem = `<img style='max-width: 100px;' src='uploads/coverPhotos/hiclipart.png' alt='video' >`
+                } %>
+
+
+                <%- imgElem %>
+               
+                <div class="media-body">
+                    <a href="/<%= post.video ? 'courses' : 'blog'  %>/post/<%=post.video ? 'x' + post.id : post.id%>">
+                        <h3><%= post.heading%></h3>
+                    </a>
+                    <p><%= `${new Date(post.date).toString().split(' ')[1]} ${new Date(post.date).getDate()} ${new Date(post.date).getFullYear()}` %></p>
+                </div>
+            </div>
+        <%})%>
+    <%}%>
+
+    <!-- <div class="media post_item">
+        <img src="img/post/post_2.png" alt="post">
+        <div class="media-body">
+            <a href="single-blog.html">
+                <h3>The Amazing Hubble</h3>
+            </a>
+            <p>02 Hours ago</p>
+        </div>
+    </div>
+    <div class="media post_item">
+        <img src="img/post/post_3.png" alt="post">
+        <div class="media-body">
+            <a href="single-blog.html">
+                <h3>Astronomy Or Astrology</h3>
+            </a>
+            <p>03 Hours ago</p>
+        </div>
+    </div>
+    <div class="media post_item">
+        <img src="img/post/post_4.png" alt="post">
+        <div class="media-body">
+            <a href="single-blog.html">
+                <h3>Asteroids telescope</h3>
+            </a>
+            <p>01 Hours ago</p>
+        </div>
+    </div> -->
+</aside>

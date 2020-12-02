@@ -144,17 +144,17 @@
                                         <%if(article.image_name){%>
                                             <% imgElem = `<img class="card-img rounded-0" src='uploads/coverPhotos/${article.image_name}' >`;%>
                                         <%}else{
-                                            imgElem = `<img class="card-img rounded-0" src='uploads/coverPhotos/hiclipart.png'  alt= 'video'>`
+                                            imgElem = `<img style='max-width: 400px; margin: auto;' class="card-img rounded-0" src='uploads/coverPhotos/hiclipart.png'  alt= 'video'>`
                                         } %>
                                         <%- imgElem %>
-                                        <a href="/blog/post/<%= article.id%>" class="blog_item_date">
+                                        <a href="/<%= article.video ? 'courses' : 'blog'  %>/post/<%=article.video ? 'x' + article.id : article.id%>" class="blog_item_date">
                                             <h3><%=new Date(article.date).getDate()%></h3>
                                             <p><%= new Date(article.date).toString().split(' ')[1]%></p>
                                         </a>
                                     </div>
         
                                     <div class="blog_details">
-                                        <a class="d-inline-block" href="/blog/post/<%= article.id%>">
+                                        <a class="d-inline-block" href="/<%= article.video ? 'courses' : 'blog'  %>/post/<%=article.video ? 'x' + article.id : article.id%>">
                                             <h2><%= article.heading%></h2>
                                         </a>
                                         <%- article.content%>
@@ -177,17 +177,17 @@
                                         <% const pages = Math.floor(total / 3) %>
 
                                          <li class="page-item">
-                                            <a href="/blog/posts/<%=currentPage <= 1 ? 1 : Number(currentPage) - 1%>" class="page-link" aria-label="Previous">
+                                            <a href="/<%= data[0].video ? 'courses' : 'blog' %>/posts/<%=currentPage <= 1 ? 1 : Number(currentPage) - 1%>" class="page-link" aria-label="Previous">
                                                 <i class="ti-angle-left"></i>
                                             </a>
                                         </li>
                                         <% for(let page = 1; page <= pages ; page++){%>
                                             <li class="page-item">
-                                                <a href="/blog/posts/<%=Number(pages) + 1%>" class="page-link"><%=page + 1%></a>
+                                                <a href="/<%= data[0].video ? 'courses' : 'blog' %>/posts/<%=Number(pages) + 1%>" class="page-link"><%=page + 1%></a>
                                             </li>
                                         <%}%>
                                         <li class="page-item">
-                                            <a href="/blog/posts/<%=Number(currentPage) + 1%>" class="page-link" aria-label="Next">
+                                            <a href="/<%= data[0].video ? 'courses' : 'blog' %>/posts/<%=Number(currentPage) + 1%>" class="page-link" aria-label="Next">
                                                 <i class="ti-angle-right"></i>
                                             </a>
                                         </li>
@@ -264,64 +264,10 @@
                             </ul>
                         </aside> -->
 
-                        <aside class="single_sidebar_widget popular_post_widget">
-                            <h3 class="widget_title">Recent Post</h3>
-                            
-                            <%if(latestPost){%>
-                                <% latestPost.forEach(post =>{%>
-                                    <%if(post.heading.length > 18){%>
-                                        <%const heading = post.heading.substr(0, 18) + '...';
-                                        post.heading = heading%>
-                                    <%}%>
-                                    <%let imgElem;%>
-                                    <div class="media post_item">
-                                        <%if(post.image_name){%>
-                                            <%imgElem = `<img style='max-width: 100px;' src='uploads/coverPhotos/${post.image_name}' alt='' >`;%>
-                                        <%}else{
-                                            imgElem = `<img style='max-width: 100px;' src='uploads/coverPhotos/hiclipart.png' alt='video' >`
-                                        } %>
+                        <!-- add latest post -->
+                        <%- include('partial/latest')  %> 
 
 
-                                        <%- imgElem %>
-                                       
-                                        <div class="media-body">
-                                            <a href="single-blog.html">
-                                                <h3><%= post.heading%></h3>
-                                            </a>
-                                            <p><%= `${new Date(post.date).toString().split(' ')[1]} ${new Date(post.date).getDate()} ${new Date(post.date).getFullYear()}` %></p>
-                                        </div>
-                                    </div>
-                                <%})%>
-                            <%}%>
-
-                            <!-- <div class="media post_item">
-                                <img src="img/post/post_2.png" alt="post">
-                                <div class="media-body">
-                                    <a href="single-blog.html">
-                                        <h3>The Amazing Hubble</h3>
-                                    </a>
-                                    <p>02 Hours ago</p>
-                                </div>
-                            </div>
-                            <div class="media post_item">
-                                <img src="img/post/post_3.png" alt="post">
-                                <div class="media-body">
-                                    <a href="single-blog.html">
-                                        <h3>Astronomy Or Astrology</h3>
-                                    </a>
-                                    <p>03 Hours ago</p>
-                                </div>
-                            </div>
-                            <div class="media post_item">
-                                <img src="img/post/post_4.png" alt="post">
-                                <div class="media-body">
-                                    <a href="single-blog.html">
-                                        <h3>Asteroids telescope</h3>
-                                    </a>
-                                    <p>01 Hours ago</p>
-                                </div>
-                            </div> -->
-                        </aside>
                         <!-- <aside class="single_sidebar_widget tag_cloud_widget">
                             <h4 class="widget_title">Tag Clouds</h4>
                             <ul class="list">
