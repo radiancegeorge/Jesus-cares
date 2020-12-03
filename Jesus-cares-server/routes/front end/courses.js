@@ -164,6 +164,7 @@ courses.use((req, res, next)=>{
     const latestPost = [];
     const sql = 'select * from video_upload order by id desc limit 6';
     db.query(sql).on('result', result=>{
+        result.video = true
         latestPost.push(result);
     }).on('end', end=>{
         req.latestPost = latestPost;

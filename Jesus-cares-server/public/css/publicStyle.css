@@ -1,0 +1,17 @@
+.document{
+    background: purple;
+    color: white!important;
+    padding: 0.5rem 2rem;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-left: auto;
+    display: block;
+    width: fit-content;
+    text-decoration: none;
+}
+.document:hover{
+    background: grey;
+    color: white;
+}

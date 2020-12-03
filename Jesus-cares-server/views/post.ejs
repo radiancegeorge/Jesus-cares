@@ -2,6 +2,8 @@
 <html class="no-js" lang="zxx">
 
 <head>
+   <link rel="stylesheet" href="css/publicStyle.css">
+
    <meta charset="utf-8">
    <meta http-equiv="x-ua-compatible" content="ie=edge">
    <title>Charifit</title>
@@ -146,6 +148,10 @@
                      
                      <%- data.content  %> 
                   </div>
+                  <% if(data.document_name){%>
+                        <a href="uploads/docs/<%= data.document_name %> " class="document" download>Get Document</a>
+                  <%} %> 
+
                </div>
                
                
@@ -172,6 +178,7 @@
                   <%- include('partial/latest.ejs') %> 
                   
                </div>
+               
             </div>
          </div>
       </div>
@@ -240,6 +247,8 @@
           }
       });
   </script>
+  <script src="js/downloadDocument.js"></script>
+
 </body>
 
 </html>
