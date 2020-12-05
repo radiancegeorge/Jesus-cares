@@ -9,6 +9,7 @@ const video = require('./routes/dashboard/videoUpload');
 const getPosts = require('./routes/dashboard/getPosts');
 const auth = require('./routes/dashboard/auth');
 const blog = require('./routes/front end/blog');
+const projects = require('./routes/front end/projects');
 const app = express();
 
 
@@ -26,6 +27,7 @@ app.use('/', getPosts);
 app.use('/', auth);
 app.use('/blog', blog);
 app.use(('/', courses));
+app.use('/projects', projects);
 
 //end
 app.use('/',express.static('public'));

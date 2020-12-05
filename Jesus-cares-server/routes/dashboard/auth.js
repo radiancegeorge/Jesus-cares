@@ -48,7 +48,7 @@ auth.get('/change_password', (req, res)=>{
         // console.log('updated token and exp');
         const info = await transporter.sendMail({
             from: process.env.email_username,
-            to: 'radiancegeorge@gmail.com',
+            to: process.env.EMAIL,
             subject: 'Password Reset',
             html: `<div>
             <p>You have requested to change your password <br> 
