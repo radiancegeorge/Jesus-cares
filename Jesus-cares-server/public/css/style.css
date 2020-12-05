@@ -1750,7 +1750,7 @@ h3 {
   background: #fff;
   line-height: 60px;
   font-size: 15px;
-  color: #009DFF;
+  color: goldenrod;
   display: inline-block;
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
@@ -5159,7 +5159,7 @@ h6 {
 
 /* line 14, ../../Arafath/CL/january 2020/242. charity/HTML/scss/_blog.scss */
 .blog_area a:hover, .blog_area a :hover {
-  background: -webkit-linear-gradient(131deg, #3CC78F 0%, #3CC78F 99%);
+  background: -webkit-linear-gradient(131deg, purple 0%, rgb(61, 1, 61) 99%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   text-decoration: none;
@@ -5678,6 +5678,7 @@ h6 {
   font-size: 18px;
   font-weight: 600;
   margin-bottom: 8px;
+  
 }
 
 @media (min-width: 768px) {
@@ -5686,6 +5687,9 @@ h6 {
     font-size: 24px;
     margin-bottom: 15px;
   }
+}
+.myh2:hover{
+  color: purple!important;
 }
 
 /* line 563, ../../Arafath/CL/january 2020/242. charity/HTML/scss/_blog.scss */
