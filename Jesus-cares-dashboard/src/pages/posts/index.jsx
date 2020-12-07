@@ -1,7 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {BiTrash, BsTrash2} from 'react-icons/all';
 import axios from 'axios';
-const url = 'http://localhost:4000/get_recent'
+const url = 'https://jesuscarescharity.com/get_recent'
 const Posts = ()=>{
     const trashType = {
         first:<BiTrash />,

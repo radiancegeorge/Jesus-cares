@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/static/css/main.2499243e.chunk.css",
+    "main.js": "/static/js/main.c7ae0fa2.chunk.js",
+    "main.js.map": "/static/js/main.c7ae0fa2.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.757f39bd.js",
+    "runtime-main.js.map": "/static/js/runtime-main.757f39bd.js.map",
+    "static/js/2.60cb00fa.chunk.js": "/static/js/2.60cb00fa.chunk.js",
+    "static/js/2.60cb00fa.chunk.js.map": "/static/js/2.60cb00fa.chunk.js.map",
+    "static/js/3.5e34d8b1.chunk.js": "/static/js/3.5e34d8b1.chunk.js",
+    "static/js/3.5e34d8b1.chunk.js.map": "/static/js/3.5e34d8b1.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/main.2499243e.chunk.css.map": "/static/css/main.2499243e.chunk.css.map",
+    "static/js/2.60cb00fa.chunk.js.LICENSE.txt": "/static/js/2.60cb00fa.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/static/media/abstract-geometric-purple-background_77895-94.436e5a75.jpg",
+    "static/media/logo.6ad2f7a5.png": "/static/media/logo.6ad2f7a5.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.757f39bd.js",
+    "static/js/2.60cb00fa.chunk.js",
+    "static/css/main.2499243e.chunk.css",
+    "static/js/main.c7ae0fa2.chunk.js"
+  ]
+}

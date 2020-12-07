@@ -4,7 +4,7 @@ import {Editor} from '@tinymce/tinymce-react';
 // import axios from 'axios';
 import Axios from 'axios';
 import Loader from '../../components/Loader';
-const url = 'http://localhost:4000/video_upload'
+const url = 'https://jesuscarescharity.com/video_upload'
 
 const Video = ()=>{
     const [upload , setUpload] = useState();

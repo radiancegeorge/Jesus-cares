@@ -1,5 +1,5 @@
 import axios from 'axios';
-const url = 'http://localhost:4000/blog_post';
+const url = 'https://jesuscarescharity.com/blog_post';
 
 const sendData = async (data)=>{
     const response = await axios.post(url, data);

@@ -19,7 +19,7 @@ auth.post('/auth', (req, res)=>{
                 //do some token and send back
                 res.status(200).send('some token');  
             }else{
-                res.status(404).send();
+                res.status(401).send();
             }
         })
     })

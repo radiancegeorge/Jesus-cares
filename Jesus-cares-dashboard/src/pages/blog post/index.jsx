@@ -3,6 +3,7 @@ import {Editor} from '@tinymce/tinymce-react';
 import '../../App.css';
 import sendData from './sendData';
 import compress from './compress';
+import Loader2 from '../../components/Loader';
 // import { resume } from '../../../../Jesus-cares-server/routes/dashboard/db';
 
 
@@ -11,7 +12,8 @@ const Post = ()=>{
     const [header, setHeader] = useState('');
     const [author, setAuthor] = useState('');
     const [image, setImage] = useState();
-    const [imageName, setImageName]= useState()
+    const [imageName, setImageName]= useState();
+    const [loader, setLoader] = useState();
 
     return(
         <div className="post">
@@ -19,7 +21,7 @@ const Post = ()=>{
                 e.preventDefault();
                 
                 if(content.trim() !== '' && header.trim() !== '' && author.trim() !== '' && image !== undefined){
-                    
+                    setLoader(Loader2)
                     const data = new FormData();
                     data.append('content', content);
                     data.append('header', header);
@@ -36,6 +38,8 @@ const Post = ()=>{
                                 window.location.href = '/blog_post'
                             }, 3000);
                         }
+                    }).catch(err=>{
+                        setLoader()
                     })
                 }
             }}>
@@ -85,7 +89,12 @@ const Post = ()=>{
                 }}>Add Cover Photo</span>
                 <button type= 'submit'>Post</button>
             </form>
-            <img src={image !== undefined && image} alt=""/>
+            {/* <img src={image !== undefined && image} alt=""/> */}
+            {loader !== undefined ? (
+                <div className="loader2">
+                    {loader}
+                </div>
+            ) : undefined}
         </div>
     )
 }
