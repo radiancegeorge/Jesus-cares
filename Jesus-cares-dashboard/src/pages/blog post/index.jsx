@@ -35,8 +35,8 @@ const Post = ()=>{
                             setAuthor('');
 
                             setTimeout(() => {
-                                window.location.href = '/blog_post'
-                            }, 3000);
+                                window.location.reload()
+                            }, 1000);
                         }
                     }).catch(err=>{
                         setLoader()
@@ -66,7 +66,7 @@ const Post = ()=>{
                     
                 }}
                 />
-                <input type="file" accept = 'image/*' className="image" name='image' style={{
+                <input type="file" accept = 'image/jpeg' className="image" name='image' style={{
                     display:'none'
                 }} onChange={e=>{
                     const file = e.target.files[0].name

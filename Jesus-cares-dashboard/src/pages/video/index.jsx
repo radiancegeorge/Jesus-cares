@@ -51,7 +51,7 @@ const Video = ()=>{
                 >Done!!</div>
                 setStage(complete);
                 setTimeout(()=>{
-                    window.location.href = '/video_upload'
+                    window.location.reload();
                 }, 2000)
             }else{
                 // display error
@@ -77,7 +77,7 @@ const Video = ()=>{
                 <input type="text" name='header' className='header' placeholder='Heading...' onChange={e=>{
                     setHeader(e.target.value)
                 }}/>
-                <input type="file" name="video" id="video" accept='video/*' onChange={e=>{
+                <input type="file" name="video" id="video" accept='video/mp4' onChange={e=>{
                     setUpload(e.target.files);
                     // console.log(e.target.files[0].name)
                 }}/>
