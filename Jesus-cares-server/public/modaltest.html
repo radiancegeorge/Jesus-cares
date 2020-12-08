@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .account{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background: rgba(255, 255, 255, 0.6);
+        width: 100vw;
+        height: 100vh;
+        transition: 0.3s;
+        opacity: 1;
+    }
+    .hide{
+        opacity: 0;
+        pointer-events: none;
+    }
+    .cancel{
+        font-size: 50px;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        transform: rotateZ(45deg);
+        cursor: pointer;
+        transition: 0.3s;
+    }
+    .cancel:hover{
+        font-size: 60px;
+    }
+</style>
+<body>
+    <button>click</button>
+
+
+    <div class="account hide">
+        <div class="cancel">+</div>
+        <p>some text</p>
+    </div>
+
+
+    <script>
+        // alert('')
+        const button = document.querySelector('button');
+        const account = document.querySelector('.account');
+        const cancel = document.querySelector('.cancel');
+        button.addEventListener('click', e=>{
+            // console.log('clicked')
+            account.classList.toggle('hide')
+        });
+        cancel.addEventListener('click', e=>{
+            account.classList.toggle('hide')
+        })
+    </script>
+</body>
+</html>

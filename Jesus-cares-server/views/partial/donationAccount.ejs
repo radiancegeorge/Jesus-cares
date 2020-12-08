@@ -1,0 +1,74 @@
+<style>
+    .account{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: rgba(0, 0, 0, 0.4);
+        width: 100vw;
+        height: 100vh;
+        transition: 0.3s;
+        opacity: 1;
+        z-index: 999;
+    }
+    .hide{
+        opacity: 0;
+        pointer-events: none;
+    }
+    .cancel{
+        font-size: 50px;
+        position: absolute;
+        top: 10px;
+        right: 20px;
+        transform: rotateZ(45deg);
+        cursor: pointer;
+        transition: 0.3s;
+        color: black!important;
+    }
+    .cancel:hover{
+        font-size: 60px;
+    }
+    a{
+        cursor: pointer!important;
+    }
+    .account p{
+		font-size: 20px;
+		font-weight: 800;
+		margin: 1rem 0;
+    }
+    .account .cover{
+        background: white;
+        box-shadow: 1px 1px 8px lightgrey;
+        text-align: center;
+        padding: 1rem;
+    }
+</style>
+
+
+<div class="account hide">
+    <div class="cancel">+</div>
+    <div class="cover">
+		<p>2036202526</p>
+		<p>First Bank</p>
+		<P>Jesus Cares Social Home for vulnerable persons</P>
+	</div>
+</div>
+
+
+<script>
+    // alert('')
+    const button = document.querySelectorAll('.button');
+    const account = document.querySelector('.account');
+    const cancel = document.querySelector('.cancel');
+    button.forEach(item=>{
+		item.addEventListener('click', e=>{
+		// console.log('clicked')
+		account.classList.toggle('hide')
+	});
+	})
+    cancel.addEventListener('click', e=>{
+        account.classList.toggle('hide')
+    })
+</script>

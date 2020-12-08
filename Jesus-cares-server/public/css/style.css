@@ -4413,7 +4413,9 @@ h6 {
   font-weight: 300;
   color: #828bb2;
 }
-
+a{
+  cursor: pointer;
+}
 /* line 515, ../../Arafath/CL/january 2020/242. charity/HTML/scss/_elements.scss */
 .single-input {
   display: block;
