@@ -26,6 +26,9 @@
   background-image: -webkit-linear-gradient(0deg, #24c0f1 0%, #4c9afe 100%);
   background-image: -ms-linear-gradient(0deg, #24c0f1 0%, #4c9afe 100%);
 }
+*,body{
+  scroll-behavior: smooth;
+}
 
 /* Normal desktop :1200px. */
 /* Normal desktop :992px. */
