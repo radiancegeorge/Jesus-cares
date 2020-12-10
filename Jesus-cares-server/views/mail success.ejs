@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <style>
+        *{
+            box-sizing: border-box;
+            margin: 0;
+        }
+        body{
+            background: purple;
+        }
+        .success{
+            margin-top: 6rem!important;
+
+            max-width: 800px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: auto;
+            height: 100vh;
+            flex-wrap: wrap;
+        }
+        .success p{
+            font-size: 30px;
+            font-weight: 600;
+            flex-basis: 100%;
+            text-align: center;
+        }
+        .success a{
+            text-decoration: none;
+            display: block;
+            text-align: center;
+            width: fit-content;
+            padding: 10px 20px;
+            color: goldenrod;
+            background: white;
+            border: 1px solid goldenrod;
+            transition: 0.4s;
+        }
+        .success a:hover{
+            color: white;
+            background-color: purple;
+            border: 1px solid purple;
+        }
+        .image{
+            /* max-width: 400px; */
+            width: 100%;
+        }
+        .success img{
+            max-width: 200px;
+            margin: auto!important;
+            display: block;
+        }
+    </style>
+    <%- include('partial/header.ejs') %> 
+    <div class="success">
+        <p><%= data.success %> </p>
+        <div class="image">
+            <img src="images/smile.png" alt="" > 
+        </div>    
+        <a href="/">Back Home</a>   
+    </div>
+    <!-- <a href='https://pngtree.com/so/smiley-clipart'>smiley clipart png from pngtree.com</a> -->
+</body>
+</html>
