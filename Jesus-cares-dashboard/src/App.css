@@ -497,3 +497,48 @@ header nav .rightSection a:hover{
 /* loader 2 */
 
 
+.tap-to-upload, .upload-cropped{
+  background: lightgrey;
+  /* width: fit-content!important; */
+  min-width: 200px;
+  padding: 8px 20px;
+  font-size: 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: 1px solid lightgrey;
+  transition: 0.3s;
+  display: inline-block!important;
+  margin: 10px 5px;
+}
+.tap-to-upload:hover, .upload-cropped:hover{
+  background: white;
+  color: black;
+  border: 1px solid lightgrey;
+}
+.holder{
+  width: fit-content;
+  margin: auto;
+}
+.upload-cropped{
+  color: white;
+  background: green;
+  border: 1px solid transparent;
+  margin-right: auto;
+}
+.caption{
+  margin: auto;
+  width: fit-content;
+}
+.caption p{
+  width: fit-content;
+  margin: 10px auto;
+}
+.caption textarea{
+  width: 400px;
+  padding: 10px;
+}
+.container{
+  max-width: 400px;
+  margin: auto;
+  text-align: center;
+}
