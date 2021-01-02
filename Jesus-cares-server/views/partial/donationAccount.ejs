@@ -11,7 +11,7 @@
         height: 100vh;
         transition: 0.3s;
         opacity: 1;
-        z-index: 999;
+        z-index: 99999999999!important;
     }
     .hide{
         opacity: 0;
@@ -26,6 +26,7 @@
         cursor: pointer;
         transition: 0.3s;
         color: black!important;
+        z-index: 9999999!important;
     }
     .cancel:hover{
         font-size: 60px;
@@ -44,15 +45,28 @@
         text-align: center;
         padding: 1rem;
     }
+    .paystack{
+		border: 1px solid purple;
+		transition: 0.3s;
+		padding: 10px 20px;
+		display: block;
+
+	}
+	.paystack:hover{
+		border: 1px solid transparent;
+	}
 </style>
 
 
 <div class="account hide">
     <div class="cancel">+</div>
     <div class="cover">
+        <h4 style="color: purple;">Donate by Bank Transfers</h4>
 		<p>2036202526</p>
 		<p>First Bank</p>
-		<P>Jesus Cares Social Home for vulnerable persons</P>
+        <P>Jesus Cares Social Home for vulnerable persons</P>
+        <a href="https://paystack.com/pay/Jesus-cares-charity" class="paystack">Donate Online with Paystack</a>
+
 	</div>
 </div>
 

@@ -26,6 +26,7 @@ const Header = ()=>{
                     <Link to='video_upload'>Video Upload</Link>
                     <Link to='blog_post'>Blog Post</Link>
                     <Link to='posts'>Posts</Link>
+                    <Link to='project'>Projects</Link>
                 </div>
             </nav>
         </header>

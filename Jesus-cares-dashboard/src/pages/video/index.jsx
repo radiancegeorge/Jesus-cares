@@ -51,7 +51,7 @@ const Video = ()=>{
                 >Done!!</div>
                 setStage(complete);
                 setTimeout(()=>{
-                    window.location.reload();
+                    window.location.href = '/#/video_upload';
                 }, 2000)
             }else{
                 // display error
@@ -83,16 +83,11 @@ const Video = ()=>{
                 }}/>
                 <Editor
                     apiKey="cyzxz48qlxcjtrlm33fqjx8ndfaxsiptkyr7f39owox4hu5h"
-                    init={{
-                        plugins: 'a11ychecker advcode casechange formatpainter linkchecker autolink lists checklist media mediaembed pageembed permanentpen emoticons powerpaste tinycomments tinymcespellchecker link',
+                    init= {{
                         height: 300,
                         width: '100%',
                         menubar: false,
-                        toolbar: 'a11ycheck emoticons heading link bold italic checklist code formatpainter pageembed permanentpen table',
-                        toolbar_mode: 'floating',
-                        tinycomments_mode: 'embedded',
-                        tinycomments_author: 'Author name',
-                        block_formats: 'Paragraph=p; Header 1=h1; Header 2=h2; Header 3=h3'
+                        
                     }}
                     onChange = {e=>{
                         setContent(e.target.getContent())
@@ -106,7 +101,7 @@ const Video = ()=>{
                     <p className='docName'>{doc !== undefined && doc.name}</p>
                     <span className="document" onClick={e=>{
                         e.target.parentElement.doc.click()
-                    }}>Attatch A document</span>
+                    }}>Attach a document</span>
                 {stage}
                 <button> <ImUpload2 color= 'white' /> <p>Upload Video</p> </button>
                 {upload !== undefined ? (<div className='progress'><ImPlay size='60px' color='purple'/> <div className='right'><span>{upload[0].name}</span> <progress value = {progress !== undefined ? progress.percentageForProgress : 0}></progress></div> </div>) : undefined }

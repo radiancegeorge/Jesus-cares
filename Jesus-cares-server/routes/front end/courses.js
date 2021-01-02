@@ -26,9 +26,9 @@ courses.get('/courses', (req, res)=>{
         let sql = `select * from video_upload order by id desc limit 3`;
         db.query(sql).on('result', result=>{
             const trunc = result.content.split('</p>');
-            if(trunc.length >= 1){
+            if(trunc.length >   1){
                 const index = result.content.indexOf(trunc[0]);
-                const content = result.content.substr(0,index -4)+'......</p>';
+                const content = result.content.substr(0,index -4)+'</p>';
                 result.content = content;
             }
             result.video = true

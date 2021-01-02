@@ -19,7 +19,7 @@ projects.get('/contact', (req, res)=>{
 });
 projects.post('/contact', async (req, res)=>{
     data = {}
-    const {name, email, subject, message} = req.body;
+    const {name, email, subject, message, phone, address} = req.body;
     if(name.trim() !== '' && email.trim() !== '' && subject.trim() !== '' && message.trim() !== ''){
         //send message
         const transporter = nodeMailer.createTransport({
@@ -33,11 +33,12 @@ projects.post('/contact', async (req, res)=>{
         });
         const info = await transporter.sendMail({
             from: process.env.contact_username,
-            to: 'radiancegeorge@gmail.com',
+            to: process.env.EMAIL,
             subject: subject,
             text: `
                 Name: ${name}
                 Email: ${email}
+            
                 Message: ${message}
             `
             

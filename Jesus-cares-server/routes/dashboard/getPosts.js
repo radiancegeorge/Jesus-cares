@@ -1,4 +1,5 @@
 const express = require('express');
+// const { get, post } = require('../front end/blog');
 const db = require('./db');
 const getPosts = express.Router();
 
@@ -27,4 +28,28 @@ getPosts.post('/get_recent', (req, res)=>{
     })
 })
 
+
+getPosts.post('/edit', (req, res)=>{
+    const {id, type} = req.body;
+    console.log(type)
+    const sql = `select * from ${type} where id = ?`;
+    db.query(sql, id).on('result', result=>{
+        result.type = type
+        res.send(result);
+    });
+});
+
+//update
+
+getPosts.post('/update_post', (req, res)=>{
+    const {type, content, header, id} = req.body;
+    const sql = `update ${type} set heading = ?, content = ? where id = ? `;
+    db.query(sql, [header, content, id], (err, result)=>{
+        if(err){
+            console.log(err)
+        }else{
+            res.status(200).send();
+        }
+    })
+})
 module.exports = getPosts;

@@ -1,7 +1,9 @@
 import React, {useState, useEffect} from 'react';
-import {BiTrash, BsTrash2} from 'react-icons/all';
+import {BiTrash, BsTrash2, BiPencil} from 'react-icons/all';
 import axios from 'axios';
-const url = 'https://jesuscarescharity.com/get_recent'
+import {Redirect} from 'react-router-dom'
+const url = 'https://jesuscarescharity.com/get_recent';
+const editUrl = 'https://jesuscarescharity.com/edit'
 const Posts = ()=>{
     const trashType = {
         first:<BiTrash />,
@@ -10,6 +12,7 @@ const Posts = ()=>{
     const [trash, setTrash] = useState(trashType.first)
     const [data, setData] = useState();
     const [activeDelete, setActiveDelete] = useState();
+    const [redirect, setRedirect] = useState()
     const [uploadsActiveDelete, setUploadsActiveDelete] = useState();
     useEffect(()=>{
       axios.get(url)
@@ -29,7 +32,14 @@ const Posts = ()=>{
             }
         })
     }
-
+    const retrieve = data =>{
+        axios.post(editUrl, data)
+        .then(response =>{
+            sessionStorage.setItem('edit', JSON.stringify(response.data));
+            // console.log(response.data);
+            setRedirect(<Redirect to='/edit' />)
+        })
+    }
     return(
         <div className='posts'>
             <div className="wrap">
@@ -43,7 +53,9 @@ const Posts = ()=>{
                                 <li key= {item.id}>{item.heading} <span className='trash' onClick={e=>{
                                     setActiveDelete(Number(item.id));
                                     setUploadsActiveDelete()
-                                }}>{trash}</span> <div className="verify" style={{
+                                }}>{trash}</span> <span className="edit" style={{marginLeft: 10, marginTop:5}} onClick={e=>{
+                                    retrieve({id: item.id, type: 'blog_post'})
+                                }}><BiPencil size='20px' color='purple'/></span> <div className="verify" style={{
                                     marginRight: activeDelete === Number(item.id) ? 0 : -130
                                 }}><span className="yes" onClick={e=>{
                                     deletePost({name:'blog_post', id: activeDelete})
@@ -64,7 +76,9 @@ const Posts = ()=>{
                                 <li key= {item.id}>{item.heading} <span className='trash' onClick={e=>{
                                     setUploadsActiveDelete(Number(item.id));
                                     setActiveDelete()
-                                }}>{trash}</span><div className="verify" style={{
+                                }}>{trash}</span><span className="edit" style={{marginLeft: 10, marginTop:5}} onClick={e=>{
+                                    retrieve({id: item.id, type: 'video_upload'})
+                                }}><BiPencil size='20px' color='purple'/></span> <div className="verify" style={{
                                     marginRight: uploadsActiveDelete === Number(item.id) ? 0 : -190
                                 }}><span className="yes" onClick={e=>{
                                     deletePost({name: 'video_upload', id: uploadsActiveDelete})
@@ -78,6 +92,7 @@ const Posts = ()=>{
                     }
                 </ul>
             </div>
+            {redirect}
         </div>
     )
 }

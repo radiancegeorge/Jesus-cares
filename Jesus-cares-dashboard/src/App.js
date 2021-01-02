@@ -6,6 +6,8 @@ import Post from './pages/blog post'
 import Auth from './pages/authentication';
 import Home from './pages/home';
 import Posts from './pages/posts';
+import Edit from './pages/edit';
+import Project from './pages/projects'
 
 function App() {
   const loggedIn = sessionStorage.getItem('loggedIn');
@@ -27,6 +29,12 @@ function App() {
             </Route>
             <Route path= '/posts' >
               <Posts />
+            </Route>
+            <Route path= '/edit' >
+              <Edit />
+            </Route>
+            <Route path ='/project' >
+              < Project />
             </Route>
           </Switch>
         </Router>

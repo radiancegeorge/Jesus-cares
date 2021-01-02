@@ -14,6 +14,7 @@ const Post = ()=>{
     const [image, setImage] = useState();
     const [imageName, setImageName]= useState();
     const [loader, setLoader] = useState();
+    const [disabled, setDisabled] = useState(false)
 
     return(
         <div className="post">
@@ -21,6 +22,7 @@ const Post = ()=>{
                 e.preventDefault();
                 
                 if(content.trim() !== '' && header.trim() !== '' && author.trim() !== '' && image !== undefined){
+                    setDisabled(true)
                     setLoader(Loader2)
                     const data = new FormData();
                     data.append('content', content);
@@ -33,9 +35,9 @@ const Post = ()=>{
                             setContent('');
                             setHeader('');
                             setAuthor('');
-
+                            setDisabled(false)
                             setTimeout(() => {
-                                window.location.reload()
+                                window.location.href = '/#/blog_post'
                             }, 1000);
                         }
                     }).catch(err=>{
@@ -87,7 +89,7 @@ const Post = ()=>{
                 <span className="image" onClick={e=>{
                     e.target.parentElement.image.click()
                 }}>Add Cover Photo</span>
-                <button type= 'submit'>Post</button>
+                <button disabled = {disabled} type= 'submit'>Post</button>
             </form>
             {/* <img src={image !== undefined && image} alt=""/> */}
             {loader !== undefined ? (

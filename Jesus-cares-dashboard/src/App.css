@@ -490,7 +490,10 @@ header nav .rightSection a:hover{
   width: 100%;
   text-align: center;
 }
-
+.projects .wrap{
+  background: white;
+  padding: 20px;
+}
 /* loader 2 */
 
 

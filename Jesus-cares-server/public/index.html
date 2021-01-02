@@ -36,16 +36,34 @@
 		html{
 			overflow-x: hidden!important;
 		}
+		nav .logo{
+			width: 100%;
+		} 
+		@media (max-width: 560px){
+			nav .logo{
+				width: 147%;
+			}
+		}
+		.auth{
+			color: goldenrod;
+			font-size: 12px!important;
+			display: block!important;
+			width: 100%;
+			text-align: center;
+			margin-top: -10px;
+		}
 	</style>
+
   </head>
   <body>
     
 	<nav class="navbar ftco_navbar ftco-navbar-light" id="ftco-navbar">
 	    <div class="container d-flex align-items-stretch">
-	    	<div class="col-4 col-lg-3 d-flex align-items-center justify-content-center">
+	    	<div class="col-6 col-lg-3 d-flex align-items-center justify-content-center flex-wrap">
 			    <a class="d-flex justify-content-center align-items-center" href="/">
-					<img width="100%" src="images/logo.png" alt="">
+					<img class="logo" src="images/logo.png" alt="">
 				</a>
+				<span class="auth" style="display:block!important;">CAC/IT/NO 154454</span>
 			</div>
 			<div class="ml-auto d-none row d-lg-flex justify-content-center align-items-center">
 				<ul style="list-style-type: none; margin: 0; color: black;" class="d-flex">
@@ -60,7 +78,7 @@
 						</a>
 					</li>
 					<li class="navbar-link">
-						<a href="https://paystack.com/pay/Jesus-cares-charity" class="button" >
+						<a  class="button" >
 							Donate
 						</a>
 					</li>
@@ -110,7 +128,7 @@
 					</a>
 				</li>
 				<li class="nav-item">
-					<a href="https://paystack.com/pay/Jesus-cares-charity"  class="nav-link button">
+					<a class="nav-link button">
 						Donate
 					</a>
 				</li>
@@ -169,7 +187,7 @@
 					What We Do
 				</a>
 				<!-- <div style="width: px;"></div> -->
-				<a href="https://paystack.com/pay/Jesus-cares-charity" class="button" style="background: purple;
+				<a class="button" style="background: purple;
 				 color: white; padding: 0.5rem 1rem;
 				 font-size: smaller;
 				 border-radius: 10%;" class="cta py-2 px-3">
@@ -282,38 +300,6 @@
 	          </div>
     	</div>
 	</section>
-
-	<section class="ftco-daily-verse bg-light">
-    	<div class="container carousel slide" data-ride="carousel">
-    		<div class="row carousel-inner justify-content-center">
-    			<div class="carousel-item mr-0 active col-md-10 daily-verse text-center p-5">
-    				<span class="flaticon-bible"></span>
-    				<h3 class="ftco-animate">"Beloved, let us love one another: for love is of God; and every one that loveth is born of God, and knoweth God. He that loveth not knoweth not God; for God is love."</h3>
-    				<h4 class="h5 mt-4 font-weight-bold ftco-animate">&mdash; 1 John 4:7-8 KJV</h4>
-				</div>
-				<div class="carousel-item mr-0 col-md-10 daily-verse text-center p-5">
-    				<span class="flaticon-bible"></span>
-    				<h3 class="ftco-animate">"Herein is love, not that we loved God, but that he loved us, and sent his Son [to be] the propitiation for our sins. Beloved, if God so loved us, we ought also to love one another."</h3>
-    				<h4 class="h5 mt-4 font-weight-bold ftco-animate">&mdash; 1 John 4:10-11 KJV</h4>
-				</div>
-				<div class="carousel-item mr-0 col-md-10 daily-verse text-center p-5">
-    				<span class="flaticon-bible"></span>
-    				<h3 class="ftco-animate">"Casting all your care upon Him, for He cares for you."</h3>
-    				<h4 class="h5 mt-4 font-weight-bold ftco-animate">&mdash; 1 Peter 5:7 KJV</h4>
-				</div>
-				<div class="carousel-item mr-0 col-md-10 daily-verse text-center p-5">
-    				<span class="flaticon-bible"></span>
-    				<h3 class="ftco-animate">"For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life."</h3>
-    				<h4 class="h5 mt-4 font-weight-bold ftco-animate">&mdash; John 3:16 KJV</h4>
-				</div>
-				<div class="carousel-item mr-0 col-md-10 daily-verse text-center p-5">
-    				<span class="flaticon-bible"></span>
-    				<h3 class="ftco-animate">"No man hath seen God at any time. If we love one another, God dwelleth in us, and his love is perfected in us."</h3>
-    				<h4 class="h5 mt-4 font-weight-bold ftco-animate">&mdash; 1 Peter 5:7 KJV</h4>
-				</div>
-    		</div>
-    	</div>
-	</section>
 	<style>
 		.our-team .container{
 			max-width: 1000px;
@@ -333,6 +319,19 @@
 			color: purple;
 			font-weight: 600;
 			font-size: 20px;
+		}
+		@media (max-width: 560px){
+			.wrap{
+				justify-content: space-around;
+			}
+			.wrap .person{
+				flex-basis: 100%;
+				text-align: center;
+				margin-top: 3rem;
+			}
+			.wrap p{
+				margin: 0.5rem 0;
+			}
 		}
 	</style>
 	<section class="our-team my-4">
@@ -391,17 +390,67 @@
 		</div>
 
 	</section>
+	<section class="ftco-daily-verse bg-light">
+    	<div class="container carousel slide" data-ride="carousel">
+    		<div class="row carousel-inner justify-content-center">
+    			<div class="carousel-item mr-0 active col-md-10 daily-verse text-center p-5">
+    				<span class="flaticon-bible"></span>
+    				<h3 class="ftco-animate">"Beloved, let us love one another: for love is of God; and every one that loveth is born of God, and knoweth God. He that loveth not knoweth not God; for God is love."</h3>
+    				<h4 class="h5 mt-4 font-weight-bold ftco-animate">&mdash; 1 John 4:7-8 KJV</h4>
+				</div>
+				<div class="carousel-item mr-0 col-md-10 daily-verse text-center p-5">
+    				<span class="flaticon-bible"></span>
+    				<h3 class="ftco-animate">"Herein is love, not that we loved God, but that he loved us, and sent his Son [to be] the propitiation for our sins. Beloved, if God so loved us, we ought also to love one another."</h3>
+    				<h4 class="h5 mt-4 font-weight-bold ftco-animate">&mdash; 1 John 4:10-11 KJV</h4>
+				</div>
+				<div class="carousel-item mr-0 col-md-10 daily-verse text-center p-5">
+    				<span class="flaticon-bible"></span>
+    				<h3 class="ftco-animate">"Casting all your care upon Him, for He cares for you."</h3>
+    				<h4 class="h5 mt-4 font-weight-bold ftco-animate">&mdash; 1 Peter 5:7 KJV</h4>
+				</div>
+				<div class="carousel-item mr-0 col-md-10 daily-verse text-center p-5">
+    				<span class="flaticon-bible"></span>
+    				<h3 class="ftco-animate">"For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life."</h3>
+    				<h4 class="h5 mt-4 font-weight-bold ftco-animate">&mdash; John 3:16 KJV</h4>
+				</div>
+				<div class="carousel-item mr-0 col-md-10 daily-verse text-center p-5">
+    				<span class="flaticon-bible"></span>
+    				<h3 class="ftco-animate">"No man hath seen God at any time. If we love one another, God dwelleth in us, and his love is perfected in us."</h3>
+    				<h4 class="h5 mt-4 font-weight-bold ftco-animate">&mdash; 1 Peter 5:7 KJV</h4>
+				</div>
+    		</div>
+    	</div>
+	</section>
+	
     
 
-    <footer class="ftco-footer ftco-bg-dark ftco-section">
+    <footer class="ftco-footer ftco-bg-dark ftco-section" style="padding: 1rem 5px!important; background: lightgrey; color: black;">
       <div class="container">
         
         <div class="row">
           <div class="col-md-12 text-center">
 
-            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+            <p style="margin: 0px; font-size: 10px!important; color: black;"> <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> <i class="icon-heart color-danger" aria-hidden="true"></i> <a href="https://jesuscarescharity.com" target="_blank" style="color: black;">Jesus cares charity</a>
   <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+  <style>
+    .contact-all img{
+        width: 15px;
+        margin-right: 10px;
+    }
+    .contact-all p{
+        font-size: 12px;
+        text-align: center;
+        margin-bottom: 0!important;
+        margin-top: 0.5rem!important;
+		color: black;
+    }
+</style>
+                            <div class="contact-all">
+                                <p><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTEyIDUxMiIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEyIDUxMjsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPGc+DQoJCTxwYXRoIGQ9Ik00NjcsNjFINDVDMjAuMjE4LDYxLDAsODEuMTk2LDAsMTA2djMwMGMwLDI0LjcyLDIwLjEyOCw0NSw0NSw0NWg0MjJjMjQuNzIsMCw0NS0yMC4xMjgsNDUtNDVWMTA2DQoJCQlDNTEyLDgxLjI4LDQ5MS44NzIsNjEsNDY3LDYxeiBNNDYwLjc4Niw5MUwyNTYuOTU0LDI5NC44MzNMNTEuMzU5LDkxSDQ2MC43ODZ6IE0zMCwzOTkuNzg4VjExMi4wNjlsMTQ0LjQ3OSwxNDMuMjRMMzAsMzk5Ljc4OHoNCgkJCSBNNTEuMjEzLDQyMWwxNDQuNTctMTQ0LjU3bDUwLjY1Nyw1MC4yMjJjNS44NjQsNS44MTQsMTUuMzI3LDUuNzk1LDIxLjE2Ny0wLjA0NkwzMTcsMjc3LjIxM0w0NjAuNzg3LDQyMUg1MS4yMTN6IE00ODIsMzk5Ljc4Nw0KCQkJTDMzOC4yMTMsMjU2TDQ4MiwxMTIuMjEyVjM5OS43ODd6Ii8+DQoJPC9nPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPC9zdmc+DQo=" /></i><span>info@Jesuscarescharity.com</span></p>
+                                <p><img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iaXNvLTg4NTktMSI/Pg0KPCEtLSBHZW5lcmF0b3I6IEFkb2JlIElsbHVzdHJhdG9yIDE5LjAuMCwgU1ZHIEV4cG9ydCBQbHVnLUluIC4gU1ZHIFZlcnNpb246IDYuMDAgQnVpbGQgMCkgIC0tPg0KPHN2ZyB2ZXJzaW9uPSIxLjEiIGlkPSJDYXBhXzEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4Ig0KCSB2aWV3Qm94PSIwIDAgNTEzLjY0IDUxMy42NCIgc3R5bGU9ImVuYWJsZS1iYWNrZ3JvdW5kOm5ldyAwIDAgNTEzLjY0IDUxMy42NDsiIHhtbDpzcGFjZT0icHJlc2VydmUiPg0KPGc+DQoJPGc+DQoJCTxwYXRoIGQ9Ik00OTkuNjYsMzc2Ljk2bC03MS42OC03MS42OGMtMjUuNi0yNS42LTY5LjEyLTE1LjM1OS03OS4zNiwxNy45MmMtNy42OCwyMy4wNDEtMzMuMjgsMzUuODQxLTU2LjMyLDMwLjcyDQoJCQljLTUxLjItMTIuOC0xMjAuMzItNzkuMzYtMTMzLjEyLTEzMy4xMmMtNy42OC0yMy4wNDEsNy42OC00OC42NDEsMzAuNzItNTYuMzJjMzMuMjgtMTAuMjQsNDMuNTItNTMuNzYsMTcuOTItNzkuMzZsLTcxLjY4LTcxLjY4DQoJCQljLTIwLjQ4LTE3LjkyLTUxLjItMTcuOTItNjkuMTIsMGwtNDguNjQsNDguNjRjLTQ4LjY0LDUxLjIsNS4xMiwxODYuODgsMTI1LjQ0LDMwNy4yYzEyMC4zMiwxMjAuMzIsMjU2LDE3Ni42NDEsMzA3LjIsMTI1LjQ0DQoJCQlsNDguNjQtNDguNjRDNTE3LjU4MSw0MjUuNiw1MTcuNTgxLDM5NC44OCw0OTkuNjYsMzc2Ljk2eiIvPg0KCTwvZz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjxnPg0KPC9nPg0KPGc+DQo8L2c+DQo8Zz4NCjwvZz4NCjwvc3ZnPg0K" /></i><span>09017677948</span> or <span>08073339045</span></p>
+                                <p><img src="data:image/svg+xml;base64,PHN2ZyBoZWlnaHQ9IjUxMiIgdmlld0JveD0iMCAwIDUxMiA1MTIiIHdpZHRoPSI1MTIiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGcgaWQ9Il8wMS1ob21lIiBkYXRhLW5hbWU9IjAxLWhvbWUiPjxnIGlkPSJnbHlwaCI+PHBhdGggZD0ibTI1NiA0Yy0xMDguMDc1IDAtMTk2IDg3LjkyNS0xOTYgMTk2IDAgNTIuNSAzMS44MDcgMTE5LjkyIDk0LjUzNyAyMDAuMzc4YTEwNjUuODE2IDEwNjUuODE2IDAgMCAwIDkzLjE2OSAxMDQuMjk0IDEyIDEyIDAgMCAwIDE2LjU4OCAwIDEwNjUuODE2IDEwNjUuODE2IDAgMCAwIDkzLjE2OS0xMDQuMjk0YzYyLjczLTgwLjQ1OCA5NC41MzctMTQ3Ljg3OCA5NC41MzctMjAwLjM3OCAwLTEwOC4wNzUtODcuOTI1LTE5Ni0xOTYtMTk2em0wIDMzNmMtNzcuMiAwLTE0MC02Mi44LTE0MC0xNDBzNjIuOC0xNDAgMTQwLTE0MCAxNDAgNjIuOCAxNDAgMTQwLTYyLjggMTQwLTE0MCAxNDB6Ii8+PHBhdGggZD0ibTM1Mi4wNzIgMTgzLjEyMS04OC04MGExMiAxMiAwIDAgMCAtMTYuMTQ0IDBsLTg4IDgwYTEyLjAwNiAxMi4wMDYgMCAwIDAgLTIuMjMgMTUuMDM5IDEyLjMzMSAxMi4zMzEgMCAwIDAgMTAuNjYgNS44NGgxMS42NDJ2NzZhMTIgMTIgMCAwIDAgMTIgMTJoMjhhMTIgMTIgMCAwIDAgMTItMTJ2LTQ0YTEyIDEyIDAgMCAxIDEyLTEyaDI0YTEyIDEyIDAgMCAxIDEyIDEydjQ0YTEyIDEyIDAgMCAwIDEyIDEyaDI4YTEyIDEyIDAgMCAwIDEyLTEydi03NmgxMS42NDJhMTIuMzMxIDEyLjMzMSAwIDAgMCAxMC42Ni01Ljg0IDEyLjAwNiAxMi4wMDYgMCAwIDAgLTIuMjMtMTUuMDM5eiIvPjwvZz48L2c+PC9zdmc+" /><span>10 Madukwe Close, Umungasi, Aba, Nigeria</span></p>
+                            </div>
           </div>
         </div>
       </div>
@@ -441,6 +490,7 @@
         transform: rotateZ(45deg);
         cursor: pointer;
         transition: 0.3s;
+		color: black!important;
     }
     .cancel:hover{
         font-size: 60px;
@@ -459,18 +509,45 @@
 		text-align: center;
 		padding: 1rem;
     }
+	.paystack{
+		border: 1px solid purple;
+		transition: 0.3s;
+		padding: 10px 20px;
+		display: block;
+
+	}
+	.paystack:hover{
+		border: 1px solid transparent;
+	}
 </style>
 <div class="account hide">
 	<div class="cancel">+</div>
 	<div class="cover">
+        <h4 style="color: purple;">Donate by Bank Transfers</h4>
+
 		<p>2036202526</p>
 		<p>First Bank</p>
 		<P>Jesus Cares Social Home for vulnerable persons</P>
+        <a href="https://paystack.com/pay/Jesus-cares-charity" class="paystack">Donate Online with Paystack</a>
 	</div>
 </div>
 
 
-
+<script>
+    // alert('')
+    const button = document.querySelectorAll('.button');
+    const account = document.querySelector('.account');
+    const cancel = document.querySelector('.cancel');
+    button.forEach(item=>{
+		item.addEventListener('click', e=>{
+		// console.log('clicked')
+		account.classList.toggle('hide')
+	});
+	})
+    cancel.addEventListener('click', e=>{
+        account.classList.toggle('hide')
+    })
+</script>
 
 
   <script src="mainjs/jquery.min.js"></script>

@@ -20,17 +20,37 @@
     <link rel="stylesheet" href="maincss/flaticon.css">
     <link rel="stylesheet" href="maincss/icomoon.css">
     <link rel="stylesheet" href="maincss/style.css">
+    
 
 
 
-
+<style>
+    nav .logo{
+        width: 100%;
+    } 
+    @media (max-width: 560px){
+        nav .logo{
+            width: 147%;
+        }
+    }
+    .auth{
+			color: goldenrod;
+			font-size: 12px!important;
+			display: block!important;
+			width: 100%;
+			text-align: center;
+            margin-top: -10px;
+		}
+</style>
 
 <nav class="navbar ftco_navbar ftco-navbar-light" id="ftco-navbar">
     <div class="container d-flex align-items-stretch">
-        <div class="col-4 col-lg-3 d-flex align-items-center justify-content-center">
+        <div class="col-6 col-lg-3 d-flex align-items-center justify-content-center flex-wrap">
             <a class="d-flex justify-content-center align-items-center" href="/">
-                <img width="100%" src="images/logo.png" alt="">
+                <img class= 'logo' src="images/logo.png" alt="">
             </a>
+				<span class="auth" style="display:block!important;">CAC/IT/NO 154454</span>
+
         </div>
         <div class="ml-auto d-none row d-lg-flex justify-content-center align-items-center">
             <ul style="list-style-type: none; margin: 0; color: black;" class="d-flex">
@@ -45,7 +65,7 @@
                     </a>
                 </li>
                 <li class="navbar-link">
-                    <a href="https://paystack.com/pay/Jesus-cares-charity" class="button" >
+                    <a class="button" >
                         Donate
                     </a>
                 </li>
@@ -95,7 +115,7 @@
                 </a>
             </li>
             <li class="nav-item">
-                <a  href = 'https://paystack.com/pay/Jesus-cares-charity' class="nav-link button">
+                <a  class="nav-link button">
                     Donate
                 </a>
             </li>
