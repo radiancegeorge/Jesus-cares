@@ -534,11 +534,21 @@ header nav .rightSection a:hover{
   margin: 10px auto;
 }
 .caption textarea{
-  width: 400px;
+  /* max-width: 400px; */
   padding: 10px;
+  width: 400px;
+  border: 1px solid purple;
 }
 .container{
   max-width: 400px;
   margin: auto;
   text-align: center;
+}
+@media (max-width: 560px){
+  .caption textarea{
+    width: 95%;
+    margin: auto!important;
+    /* text-align: center; */
+    display: block;
+  }
 }

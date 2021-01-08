@@ -16,5 +16,13 @@ db.connect(err=>{
     if(err)throw err;
     console.log('db connected')
 })
-
+const handle = ()=>{
+    sql = `create table projects (id int primary key auto_increment, name varchar(150), content varchar(300), date varchar(200))`;
+    drop = `drop table projects`
+    db.query(sql, (err, result)=>{
+        if(err)throw err;
+        console.log(result)
+    })
+}
+// handle()
 module.exports = db

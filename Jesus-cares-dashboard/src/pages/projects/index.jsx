@@ -1,29 +1,56 @@
+import Axios from 'axios';
 import React, {useState} from 'react';
 // import Cropper from 'cropperjs'
 // import '../../App.css'
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
+const host = 'http://localhost:4000/'
+
 const Projects = ()=>{
-const [src, setSrc] = useState();
-const [aspectRatio, setAspectRatio] = useState({aspect: 16/9});
-const getImageSelection = e =>{
-    let {x, y, width, height} = aspectRatio;
-    const holder = document.querySelector('.holder');
-    if(width === 0) width = holder.clientWidth;
-    if(height === 0) height = holder.clientHeight;
-    const img = document.createElement('img');
-    img.src = src;
-    img.onload = e =>{
-        const image = e.target;
-        alert('loaded');
-        const canvas = document.createElement('canvas');
-        const scaleX = image.naturalWidth / image.width;
-        const scaleY = image.naturalHeight / image.height;
-        canvas.width = width;
-        canvas.height = height;
-        const ctx = canvas.getContext('2d');
-        ctx.drawImage(image, x * scaleX, y * scaleY, width * scaleX, height * scaleY, 0 ,0 , width, height);
-        const data = ctx.canvas.toDataURL('image/jpeg', 0.7);
+    const [content, setContent] = useState('')
+    const [src, setSrc] = useState();
+    const [aspectRatio, setAspectRatio] = useState({aspect: 16/9});
+    const getImageSelection = e =>{
+        let {x, y, width, height} = aspectRatio;
+        const holder = document.querySelector('.holder');
+        if(width === 0) width = holder.clientWidth;
+        if(height === 0) height = holder.clientHeight;
+        const img = document.createElement('img');
+        img.src = src;
+        img.onload = e =>{
+            const image = e.target;
+            // alert('loaded');
+            const canvas = document.createElement('canvas');
+            const scaleX = image.naturalWidth / image.width;
+            const scaleY = image.naturalHeight / image.height;
+            canvas.width = width;
+            canvas.height = height;
+            const ctx = canvas.getContext('2d');
+            ctx.drawImage(image, x * scaleX, y * scaleY, width * scaleX, height * scaleY, 0 ,0 , width, height);
+            const data = new Promise((resolve, reject)=>{
+                ctx.canvas.toBlob(e=>{
+                    console.log(e)
+                    resolve(e);
+                })
+            })
+            data.then(result=>{
+                // console.log(result)
+                const formData = new FormData();
+                formData.append('image', result, 'photo.jpg');
+                formData.append('content', content)
+                if(content.trim() !== ''){
+                    Axios.post(host + 'projects_upload', formData).then(response=>{
+                        //display success message
+                        setTimeout(() => {
+                            response.status === 200 && window.location.reload()
+                        }, 2000);
+                    }).catch(err=>{
+                        //display an err message;
+                    })
+                }else{
+                    //input a text error
+                }
+            })
         
     }
     
@@ -44,14 +71,16 @@ const getImageSelection = e =>{
                     </div>
                     {src && <div className='caption'>
                         <p>Caption</p>
-                        <textarea name="" id="" cols="30" rows="3"></textarea>
+                        <textarea name="" id="" cols="30" rows="3" onChange={e=>{
+                            setContent(e.target.value)
+                        }}></textarea>
                         </div>}
                 {/* </canvas> */}
 
                 <div className="container">
-                <form className="upload">
+                <form className="upload"> 
                     
-                    <input type="file" name='image' style={{
+                    <input type="file" accept= 'image/jpeg' name='image' style={{
                     display:'none'
                     }}
                     onChange={e=>{

@@ -10,6 +10,7 @@ const getPosts = require('./routes/dashboard/getPosts');
 const auth = require('./routes/dashboard/auth');
 const blog = require('./routes/front end/blog');
 const projects = require('./routes/front end/projects');
+const projectsUpload = require('./routes/dashboard/projects')
 const app = express();
 
 
@@ -28,7 +29,7 @@ app.use('/', auth);
 app.use('/blog', blog);
 app.use(('/', courses));
 app.use('/', projects);
-
+app.use('/', projectsUpload);
 //end
 app.use('/',express.static('public'));
 app.use('/blog/posts/', express.static('public'));
@@ -41,7 +42,7 @@ app.use('/blog/post/', express.static('public'));
 app.use('/courses/post/', express.static('public'));
 app.use('/projects/', express.static('public'));
  
- 
+  
 //another start
 
 //ends here
