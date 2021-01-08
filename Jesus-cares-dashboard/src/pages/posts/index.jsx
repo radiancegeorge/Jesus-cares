@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {BiTrash, BsTrash2, BiPencil} from 'react-icons/all';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom'
-const url = 'https://jesuscarescharity.com/get_recent';
+const url = 'http://localhost:4000/get_recent';
 const editUrl = 'https://jesuscarescharity.com/edit'
 const Posts = ()=>{
     const trashType = {
@@ -14,6 +14,8 @@ const Posts = ()=>{
     const [activeDelete, setActiveDelete] = useState();
     const [redirect, setRedirect] = useState()
     const [uploadsActiveDelete, setUploadsActiveDelete] = useState();
+    const [projectsDelete, setProjectsDelete] = useState();
+    
     useEffect(()=>{
       axios.get(url)
       .then(response=>{
@@ -40,6 +42,7 @@ const Posts = ()=>{
             setRedirect(<Redirect to='/edit' />)
         })
     }
+    console.log(data)
     return(
         <div className='posts'>
             <div className="wrap">
@@ -52,7 +55,8 @@ const Posts = ()=>{
                             data[0].length === 0 ? <p className="empty">Nothing to display</p> : data[0].map(item=>(
                                 <li key= {item.id}>{item.heading} <span className='trash' onClick={e=>{
                                     setActiveDelete(Number(item.id));
-                                    setUploadsActiveDelete()
+                                    setUploadsActiveDelete();
+                                    setProjectsDelete()
                                 }}>{trash}</span> <span className="edit" style={{marginLeft: 10, marginTop:5}} onClick={e=>{
                                     retrieve({id: item.id, type: 'blog_post'})
                                 }}><BiPencil size='20px' color='purple'/></span> <div className="verify" style={{
@@ -75,7 +79,8 @@ const Posts = ()=>{
                             data[1].length === 0 ? <p className="empty">Nothing to display</p> : data[1].map(item=>(
                                 <li key= {item.id}>{item.heading} <span className='trash' onClick={e=>{
                                     setUploadsActiveDelete(Number(item.id));
-                                    setActiveDelete()
+                                    setActiveDelete();
+                                    setProjectsDelete()
                                 }}>{trash}</span><span className="edit" style={{marginLeft: 10, marginTop:5}} onClick={e=>{
                                     retrieve({id: item.id, type: 'video_upload'})
                                 }}><BiPencil size='20px' color='purple'/></span> <div className="verify" style={{
@@ -90,6 +95,29 @@ const Posts = ()=>{
                             ))
                         )
                     }
+                    <h4 style={{
+                        margin: '1rem 0'
+                    }}>Last Projects</h4>
+                    {
+                        data === undefined ? undefined : (
+                            data[2].length === 0 ? <p className="empty">Nothing to display</p> : data[2].map(item=>(
+                                <li key= {item.id}>{item.content} <span className='trash' onClick={e=>{
+                                    setUploadsActiveDelete();
+                                    setActiveDelete();
+                                    setProjectsDelete(Number(item.id))
+                                }}>{trash}</span><div className="verify" style={{
+                                    marginRight: projectsDelete === Number(item.id) ? 0 : -190
+                                }}><span className="yes" onClick={e=>{
+                                    deletePost({name: 'projects', id: projectsDelete})
+                                }}>yes</span><span className="no" style={{
+                                    marginLeft: 50
+                                }} onClick={e=>{
+                                    setProjectsDelete()
+                                }}> no</span></div></li>
+                            ))
+                        )
+                    }
+                    
                 </ul>
             </div>
             {redirect}

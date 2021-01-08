@@ -14,7 +14,13 @@ getPosts.get('/get_recent', (req, res)=>{
         db.query(sql, (err, result)=>{
             if(err)throw err;
             recentPosts.push(result);
-            res.status(200).send(recentPosts);
+            const sql = `select * from projects order by id limit 10`;
+            db.query(sql, (err, result)=>{
+                if(err)throw err;
+                // console.log(result);
+                recentPosts.push(result)
+                res.status(200).send(recentPosts);
+            })
         })
     })
 })

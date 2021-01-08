@@ -4,7 +4,7 @@ import React, {useState} from 'react';
 // import '../../App.css'
 import ReactCrop from 'react-image-crop';
 import 'react-image-crop/dist/ReactCrop.css';
-const host = 'http://localhost:4000/'
+const host = 'https://jesuscarescharity.com/'
 
 const Projects = ()=>{
     const [content, setContent] = useState('')
