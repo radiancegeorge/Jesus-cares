@@ -1,6 +1,7 @@
 const express = require('express');
-const nodeMailer = require('nodemailer')
-
+const nodeMailer = require('nodemailer');
+const db = require('../dashboard/db');
+const limit = 8
 const projects = express.Router();
 
 
@@ -52,9 +53,32 @@ projects.post('/contact', async (req, res)=>{
     }
 });
 
-
-
-// projects.get('/test', (req, res)=>{
-//     res.render('mail success');
-// })
+projects.get('/our_projects/:num?', (req, res)=>{
+    let {num} = req.params;
+    console.log(num)
+    num === undefined && (num = 1);
+        const query = `select * from projects`;
+        
+        db.query(query, (err, result)=>{
+            if(err)throw err;
+            const page = Math.ceil(result.length / limit);
+            const data = {};
+            if(page <= 1){
+                data.data = result;
+                res.render('our_projects', {data});
+            }else{
+                const max = num * limit;
+                const min = max - limit;
+                const toRender = result.slice(min, max);
+                data.totalLength = result.length;
+                data.data = toRender;
+                data.page = page;
+                data.currentPage = num;
+                console.log(data.currentPage)
+                res.render('our_projects', {data});
+            }
+        })
+    
+})
+// console.log(Math.ceil(1.125))
 module.exports = projects;

@@ -41,6 +41,7 @@ app.use('/courses/posts/', express.static('public'));
 app.use('/blog/post/', express.static('public'));
 app.use('/courses/post/', express.static('public'));
 app.use('/projects/', express.static('public'));
+app.use('/our_projects/', express.static('public'));
  
   
 //another start

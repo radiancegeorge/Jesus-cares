@@ -33,6 +33,7 @@ const Projects = ()=>{
                     resolve(e);
                 })
             })
+            
             data.then(result=>{
                 // console.log(result)
                 const formData = new FormData();

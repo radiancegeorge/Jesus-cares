@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include('partial/headerLinks.ejs') %> 
+</head>
+<body>
+        <%- include('partial/header.ejs')  %> 
+    <div  class=" dropping mt-5 container">
+        <h4 style="font-weight: 600; color: purple;">
+            Our Projects
+        </h4>
+        <hr style="margin: 5px 0px;">
+    </div>
+    <div class="container">
+        <div class="d-flex row justify-content-around">
+        <% if(data.data){%>
+            <% data.data.forEach(element => {%>
+                <div class="picsquare">
+                    <img class="w-100" src="uploads/coverPhotos/<%= element.name %> " alt="">
+                    <p>
+                        <%= element.content %> 
+                    </p>
+                </div>
+            <%});%>
+       <% } %> 
+        
+    </div>
+    <div class="my-5 container d-flex justify-content-center">
+        <% if(data.page){%>
+            <div style="justify-content:center;
+    display: flex; background-color: goldenrod; border-radius: 25px; color: white;
+    padding: 3px 10px;">
+
+            
+            <a href="<%= data.currentPage >= 2 ? data.currentPage - 1 : data.currentPage %> " class="pg-control">Prev</a>
+            <% for(let i = 1; i < data.page ; i++){ %>
+                <a href="/our_projects/<%= i + 1 %> " class="pg-control"><%= i + 1 %> </a>
+                
+            <% } %> 
+            <a href="/our_projects/<%= (data.currentPage + 1) > data.page ? data.currentPage : (data.currentPage + 1)%> " class="pg-control">Next</a>
+            
+        </div>
+      <%  } %> 
+    </div>
+</body>
+</html>
