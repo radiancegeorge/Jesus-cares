@@ -7,7 +7,7 @@ import logo from '../logo.png'
 const Header = ()=>{
     const [classes, setClasses] = useState(true);
     return (
-        <header>
+        <header> 
             <nav>
                 <div className="hambugger" onClick={e=>{
                     const value = classes === true ? false : true;

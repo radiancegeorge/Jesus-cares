@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import {BiTrash, BsTrash2, BiPencil} from 'react-icons/all';
 import axios from 'axios';
 import {Redirect} from 'react-router-dom'
-const url = 'http://localhost:4000/get_recent';
+const url = 'https://jesuscarescharity.com/get_recent';
 const editUrl = 'https://jesuscarescharity.com/edit'
 const Posts = ()=>{
     const trashType = {

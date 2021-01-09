@@ -10,6 +10,7 @@ const Projects = ()=>{
     const [content, setContent] = useState('')
     const [src, setSrc] = useState();
     const [aspectRatio, setAspectRatio] = useState({aspect: 16/9});
+    const [success, setSuccess] = useState(false)
     const getImageSelection = e =>{
         let {x, y, width, height} = aspectRatio;
         const holder = document.querySelector('.holder');
@@ -42,8 +43,9 @@ const Projects = ()=>{
                 if(content.trim() !== ''){
                     Axios.post(host + 'projects_upload', formData).then(response=>{
                         //display success message
+                        setSuccess(!success);
                         setTimeout(() => {
-                            response.status === 200 && window.location.reload()
+                            response.status === 200 && (window.location.href = '/');
                         }, 2000);
                     }).catch(err=>{
                         //display an err message;
@@ -106,7 +108,15 @@ const Projects = ()=>{
                     }}> Upload </span>}
                 </form>
                 </div>
+                
             </div>
+            {
+                success && (
+                    <div className="message">
+                        <p className = {success && 'show-success'}>Posted</p>
+                    </div>
+                )
+            }
         </div>
     )
 }
