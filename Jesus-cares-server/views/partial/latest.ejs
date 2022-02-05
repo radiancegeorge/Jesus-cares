@@ -1,32 +1,31 @@
 <aside class="single_sidebar_widget popular_post_widget">
-    <h3 class="widget_title">Recent Post</h3>
-    
-    <%if(latestPost){%>
-        <% latestPost.forEach(post =>{%>
-            <%if(post.heading.length > 18){%>
-                <%const heading = post.heading.substr(0, 18) + '...';
-                post.heading = heading%>
-            <%}%>
-            <%let imgElem;%>
-            <div class="media post_item">
-                <%if(post.image_name){%>
-                    <%imgElem = `<img style='max-width: 100px;' src='uploads/coverPhotos/${post.image_name}' alt='' >`;%>
-                <%}else{
-                    imgElem = `<img style='max-width: 100px;' src='uploads/coverPhotos/kisspng-computer-icons-youtube-play-button-clip-art-icon-png-play-button-5ab11134231fe7.2731344115215537161439.png' alt='videoImage' >`
-                } %>
+  <h3 class="widget_title">Recent Post</h3>
 
+  <%if(latestPost){%> <% latestPost.forEach(post =>{%> <%if(post.heading.length
+  > 18){%> <%const heading = post.heading.substr(0, 18) + '...'; post.heading =
+  heading%> <%}%> <%let imgElem;%>
+  <div class="media post_item">
+    <%if(post.image_name){%> <%imgElem = `<img
+      style="max-width: 100px"
+      src="uploads/coverPhotos/${post.image_name}"
+      alt=""
+    />`;%> <%}else{ imgElem = `<img
+      style="max-width: 100px"
+      src="uploads/coverPhotos/kisspng-computer-icons-youtube-play-button-clip-art-icon-png-play-button-5ab11134231fe7.2731344115215537161439.png"
+      alt="videoImage"
+    />` } %> <%- imgElem %>
 
-                <%- imgElem %>
-               
-                <div class="media-body">
-                    <a href="/<%= post.video ? 'courses' : 'blog'  %>/post/<%=post.video ? 'x' + post.id : post.id%>">
-                        <h3><%= post.heading%></h3>
-                    </a>
-                    <p><%= `${new Date(post.date).toString().split(' ')[1]} ${new Date(post.date).getDate()} ${new Date(post.date).getFullYear()}` %></p>
-                </div>
-            </div>
-        <%})%>
-    <%}%>
-
-    
+    <div class="media-body">
+      <a
+        href="/<%= post.video ? 'courses' : 'blog'  %>/post/<%=post.video ? 'x' + post.id : post.id%>"
+      >
+        <h3><%= post.heading%></h3>
+      </a>
+      <p>
+        <%= `${new Date(post.date).toString().split(' ')[1]} ${new
+        Date(post.date).getDate()} ${new Date(post.date).getFullYear()}` %>
+      </p>
+    </div>
+  </div>
+  <%})%> <%}%>
 </aside>
