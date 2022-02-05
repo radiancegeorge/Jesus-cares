@@ -15,7 +15,7 @@ const compress = async  data =>{
                 canvas.width = max_width;
                 canvas.height = ratio * img.height;
 
-                ctx.drawImage(img, 0, 0, canvas.width, canvas.height);
+                ctx.drawImage(e.target, 0, 0, canvas.width, canvas.height);
                 // const newImage2 = ctx.canvas.toDataURL('image/jpeg', 0.7);
                 const newImage = ctx.canvas.toBlob(e=>{ resolve(e)},'image/jpeg', 0.7);
                 // console.log(newImage)

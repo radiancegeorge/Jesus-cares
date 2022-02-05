@@ -12,10 +12,10 @@ const Projects = ()=>{
     const [aspectRatio, setAspectRatio] = useState({aspect: 16/9});
     const [success, setSuccess] = useState(false)
     const getImageSelection = e =>{
-        let {x, y, width, height} = aspectRatio;
+        
         const holder = document.querySelector('.holder');
-        if(width === 0) width = holder.clientWidth;
-        if(height === 0) height = holder.clientHeight;
+        // if(width === 0) width = holder.clientWidth;
+        // if(height === 0) height = holder.clientHeight;
         const img = document.createElement('img');
         img.src = src;
         img.onload = e =>{
@@ -24,10 +24,11 @@ const Projects = ()=>{
             const canvas = document.createElement('canvas');
             const scaleX = image.naturalWidth / image.width;
             const scaleY = image.naturalHeight / image.height;
-            canvas.width = width;
-            canvas.height = height;
+            canvas.width = image.width;
+            canvas.height = image.height;
+            // console.log(width, height)
             const ctx = canvas.getContext('2d');
-            ctx.drawImage(image, x * scaleX, y * scaleY, width * scaleX, height * scaleY, 0 ,0 , width, height);
+            ctx.drawImage(image, 0 , 0, image.width , image.height);
             const data = new Promise((resolve, reject)=>{
                 ctx.canvas.toBlob(e=>{
                     console.log(e)
@@ -67,10 +68,12 @@ const Projects = ()=>{
 
                 {/* <canvas className="placeholder"> */}
                     <div className="holder">
-                        <ReactCrop src = {src} crop= {aspectRatio} onChange ={e=>{
+
+                        {src && <img  src={src} width="100%"/>}
+                        {/* <ReactCrop src = {src} crop= {aspectRatio} onChange ={e=>{
                             setAspectRatio(e);
                             console.log(e)
-                        }}/>
+                        }}/> */}
                     </div>
                     {src && <div className='caption'>
                         <p>Caption</p>
@@ -92,6 +95,7 @@ const Projects = ()=>{
                         reader.readAsDataURL(file);
                         reader.onload = e=>{
                             const data = e.target.result;
+                            console.log(src)
                             setSrc(data)
                         }
                         
